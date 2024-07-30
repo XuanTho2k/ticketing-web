@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-client-js-depl
+spec:
+  selector:
+    matchLabels:
+      app: ticket-client-js
+  template:
+    metadata:
+      labels:
+        app: ticket-client-js
+    spec:
+      containers:
+        - name: ticket-client
+          image: xuantho2811/ticket-client-js
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "1000m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ticket-client-js-srv
+spec:
+  selector:
+    app: ticket-client-js
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
