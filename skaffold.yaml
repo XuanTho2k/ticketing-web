@@ -21,3 +21,14 @@ build:
         manual:
           - dest: .
             src: "src/**/*.ts"
+    - image: xuantho2811/ticket-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+        noCache: false
+        pullParent: false
+        squash: false
+      sync:
+        manual:
+          - dest: .
+            src: "src/**/*.{ts,tsx,html}"
