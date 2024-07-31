@@ -2,12 +2,12 @@ import { useState } from "react";
 import useRequest from "../../hooks/useRequest";
 import Router from "next/router";
 
-const signup = () => {
+const signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { doRequest, errors } = useRequest({
-    url: "/api/users/signup",
+    url: "/api/users/signin",
     method: "post",
     body: {
       email,
@@ -41,9 +41,9 @@ const signup = () => {
       </div>
 
       {errors}
-      <button className="btn btn-primary">Sign Up</button>
+      <button className="btn btn-primary">Sign In</button>
     </form>
   );
 };
 
-export default signup;
+export default signin;
